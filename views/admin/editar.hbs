@@ -1,0 +1,47 @@
+<div class="container" style="margin: 50px auto;">
+  <!-- Encabezado -->
+  <div class="row">
+    <div class="col">
+      <p>¡Hola, {{usuario}}! 👋 Estás editando un producto.
+        <a href="/admin/login/logout" class="btn btn-sm btn-danger">
+          <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Título -->
+  <div class="row mb-3">
+    <div class="col">
+      <h3>Editar Producto</h3>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <form action="/admin/productos/editar/{{producto.id}}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" value="{{producto.titulo}}" required>
+    </div>
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Imagen Actual</label>
+      <div>
+        <img src="{{producto.imagen}}" alt="{{producto.titulo}}" width="120">
+      </div>
+      <label for="nuevaImagen" class="form-label mt-2">Seleccionar nueva imagen</label>
+      <input type="file" class="form-control" id="nuevaImagen" name="imagen">
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripcion" name="descripcion" rows="5" required>{{producto.descripcion}}</textarea>
+    </div>
+    <div class="mb-3 text-end">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save"></i> Guardar Cambios
+      </button>
+      <a href="/admin/productos" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Cancelar
+      </a>
+    </div>
+  </form>
+</div>

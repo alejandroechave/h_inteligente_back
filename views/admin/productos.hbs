@@ -1,0 +1,56 @@
+<div class="container" style="margin: 50px auto;">
+  <!-- Encabezado -->
+  <div class="row">
+    <div class="col">
+      <p class="text-right">¡Hola, {{usuario}}! 👋 Bienvenido/a a la sección de administración de productos de Hogar Inteligente.
+        <a href="/admin/login/logout" class="btn btn-sm btn-danger">
+          <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Título y botón para agregar -->
+  <div class="row mb-3">
+    <div class="col-8">
+      <h3>Listado de Productos</h3>
+    </div>
+    <div class="col-4 text-end">
+      <a href="/admin/productos/agregar" class="btn btn-success">
+        <i class="bi bi-file-plus"></i> Nuevo
+      </a>
+    </div>
+  </div>
+
+  <!-- Tabla de productos -->
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Título</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each productos}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.titulo}}</td>
+        <td><img src="{{this.imagen}}" alt="{{this.titulo}}" width="60"></td>
+        <td>{{this.descripcion}}</td>
+        <td>
+          <a href="/admin/productos/editar/{{this.id}}" class="btn btn-warning btn-sm">
+            <i class="fa fa-edit"></i> Editar
+          </a>
+          <a href="/admin/productos/eliminar/{{this.id}}" class="btn btn-danger btn-sm" 
+             onclick="return confirm('¿Seguro que deseas eliminar este producto?')">
+            <i class="fa fa-trash"></i> Eliminar
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
